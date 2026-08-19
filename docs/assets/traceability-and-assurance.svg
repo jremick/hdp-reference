@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+  <title id="title">HDP traceability spine and assurance layers</title>
+  <desc id="desc">Traceability connects outcome, requirement, component, test, evidence, and qualified claim. Assurance progresses through structural, semantic, profile, implementation, outcome-fitness, and operational layers, each answering a different question.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#37474F"/></marker>
+    <style>
+      .title{font:700 29px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#13343B}.panel{font:700 20px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#13343B}.label{font:600 15px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.question{font:13px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#13343B}.edge{font:12px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#546E7A}.light{fill:#FFFFFF}.dark{fill:#13343B}.line{fill:none;stroke:#37474F;stroke-width:2;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1200" height="650" fill="#FFFFFF"/>
+  <text x="48" y="48" class="title">Traceability is not the same as assurance</text>
+
+  <rect x="40" y="78" width="1120" height="225" rx="18" fill="#E8F4F6" stroke="#187078" stroke-width="2"/>
+  <text x="70" y="113" class="panel">Traceability spine</text>
+  <g transform="translate(55 148)">
+    <rect x="0" y="0" width="155" height="72" rx="12" fill="#78909C" stroke="#607D8B" stroke-width="2"/><text x="78" y="43" text-anchor="middle" class="label light">Outcome</text>
+    <rect x="190" y="0" width="155" height="72" rx="12" fill="#78909C" stroke="#607D8B" stroke-width="2"/><text x="268" y="43" text-anchor="middle" class="label light">Requirement</text>
+    <rect x="380" y="0" width="155" height="72" rx="12" fill="#20808D" stroke="#187078" stroke-width="2"/><text x="458" y="43" text-anchor="middle" class="label light">Component</text>
+    <rect x="570" y="0" width="155" height="72" rx="12" fill="#20808D" stroke="#187078" stroke-width="2"/><text x="648" y="43" text-anchor="middle" class="label light">Test</text>
+    <rect x="760" y="0" width="155" height="72" rx="12" fill="#2E7D32" stroke="#2E7D32" stroke-width="2"/><text x="838" y="43" text-anchor="middle" class="label light">Evidence</text>
+    <rect x="950" y="0" width="155" height="72" rx="12" fill="#FFF3E0" stroke="#C47530" stroke-width="2"/><text x="1028" y="43" text-anchor="middle" class="label dark">Qualified claim</text>
+    <path d="M155 36 H180 M345 36 H370 M535 36 H560 M725 36 H750 M915 36 H940" class="line"/>
+    <text x="173" y="23" text-anchor="middle" class="edge">requires</text><text x="362" y="23" text-anchor="middle" class="edge">implements</text><text x="552" y="23" text-anchor="middle" class="edge">verifies</text><text x="742" y="23" text-anchor="middle" class="edge">produces</text><text x="932" y="23" text-anchor="middle" class="edge">supports</text>
+  </g>
+  <text x="70" y="275" class="question">Typed relations connect a specific claim to a specific evaluated subject and evidence record.</text>
+
+  <rect x="40" y="335" width="1120" height="265" rx="18" fill="#ECEEF0" stroke="#607D8B" stroke-width="2"/>
+  <text x="70" y="371" class="panel">Assurance layers</text>
+  <g transform="translate(55 405)">
+    <rect x="0" y="0" width="155" height="94" rx="12" fill="#FFFFFF" stroke="#607D8B" stroke-width="2"/><text x="78" y="32" text-anchor="middle" class="label dark">1. Structural</text><text x="78" y="58" text-anchor="middle" class="question"><tspan x="78">Well formed?</tspan></text>
+    <rect x="190" y="0" width="155" height="94" rx="12" fill="#FFFFFF" stroke="#607D8B" stroke-width="2"/><text x="268" y="32" text-anchor="middle" class="label dark">2. Semantic</text><text x="268" y="58" text-anchor="middle" class="question"><tspan x="268">Rules and refs</tspan><tspan x="268" dy="18">hold?</tspan></text>
+    <rect x="380" y="0" width="155" height="94" rx="12" fill="#FFFFFF" stroke="#607D8B" stroke-width="2"/><text x="458" y="32" text-anchor="middle" class="label dark">3. Profile</text><text x="458" y="58" text-anchor="middle" class="question"><tspan x="458">Overlay duties</tspan><tspan x="458" dy="18">met?</tspan></text>
+    <rect x="570" y="0" width="155" height="94" rx="12" fill="#FFFFFF" stroke="#607D8B" stroke-width="2"/><text x="648" y="32" text-anchor="middle" class="label dark">4. Implementation</text><text x="648" y="58" text-anchor="middle" class="question"><tspan x="648">Bound harness</tspan><tspan x="648" dy="18">conforms?</tspan></text>
+    <rect x="760" y="0" width="155" height="94" rx="12" fill="#FFF3E0" stroke="#C47530" stroke-width="2"/><text x="838" y="32" text-anchor="middle" class="label dark">5. Outcome fitness</text><text x="838" y="58" text-anchor="middle" class="question"><tspan x="838">Thresholds</tspan><tspan x="838" dy="18">met?</tspan></text>
+    <rect x="950" y="0" width="155" height="94" rx="12" fill="#FFF3E0" stroke="#C47530" stroke-width="2"/><text x="1028" y="32" text-anchor="middle" class="label dark">6. Operational</text><text x="1028" y="58" text-anchor="middle" class="question"><tspan x="1028">Assurance still</tspan><tspan x="1028" dy="18">holds?</tspan></text>
+    <path d="M155 47 H180 M345 47 H370 M535 47 H560 M725 47 H750 M915 47 H940" class="line"/>
+  </g>
+  <text x="70" y="565" class="question">Passing one layer does not imply that a later layer has passed.</text>
+</svg>

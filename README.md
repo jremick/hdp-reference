@@ -31,20 +31,9 @@ such as:
 
 HDP makes those relationships explicit and machine-readable.
 
-```text
-intent + environment + constraints
-                |
-                v
-      Harness Definition Package
-        |          |           |
-        v          v           v
-   generator    runtime     evaluator
-        |          |           |
-        +----------+-----------+
-                   |
-                   v
-        traceable outcome evidence
-```
+<p align="center">
+  <img src="docs/assets/hdp-at-a-glance.svg" width="880" alt="HDP connects intended outcomes, environment, and constraints to a bound model-harness-runtime system and an independent evaluator that produces evidence and qualified claims."/>
+</p>
 
 The evaluator is deliberately outside the model-harness system. Hidden cases,
 answers, evaluator-only prompts, and acceptance secrets are not part of an HDP
@@ -66,6 +55,9 @@ that the harness can consume.
 - [Conformance material](conformance/) — fixtures and expected results for
   implementers.
 - [Agent Skills](skills/) — portable authoring and reconstruction workflows.
+
+See the [visual package anatomy](docs/assets/hdp-package-anatomy.svg) for how the
+24 information families group into six readable domains.
 
 ## Quick start
 

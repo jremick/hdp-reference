@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850" role="img" aria-labelledby="title desc">
+  <title id="title">Harness Definition Package adoption lifecycle</title>
+  <desc id="desc">A new harness path captures outcomes and reviews unknowns. An existing harness path inventories artifacts, classifies evidence, and confirms intent. Both converge on a resolved HDP, layered validation, binding, implementation, execution, independent evaluation, evidence retention, monitoring, and reassessment after material change.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#37474F"/></marker>
+    <style>
+      .title{font:700 29px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#13343B}.panel{font:700 18px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#13343B}.label{font:600 15px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.small{font:13px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#546E7A}.light{fill:#FFFFFF}.dark{fill:#13343B}.line{fill:none;stroke:#37474F;stroke-width:2;marker-end:url(#arrow)}.dash{fill:none;stroke:#607D8B;stroke-width:2;stroke-dasharray:7 6;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1200" height="850" fill="#FFFFFF"/>
+  <text x="48" y="48" class="title">Adopt HDP from either direction</text>
+
+  <rect x="48" y="80" width="360" height="210" rx="18" fill="#E8F4F6" stroke="#187078" stroke-width="2"/>
+  <text x="228" y="114" text-anchor="middle" class="panel">New harness</text>
+  <rect x="78" y="145" width="142" height="82" rx="12" fill="#20808D" stroke="#187078" stroke-width="2"/>
+  <text x="149" y="178" text-anchor="middle" class="label light"><tspan x="149">Capture outcomes</tspan><tspan x="149" dy="23">and constraints</tspan></text>
+  <rect x="250" y="145" width="128" height="82" rx="12" fill="#E08A3C" stroke="#C47530" stroke-width="2"/>
+  <text x="314" y="178" text-anchor="middle" class="label light"><tspan x="314">Review with</tspan><tspan x="314" dy="23">owners</tspan></text>
+  <path d="M220 186 H240" class="line"/>
+
+  <rect x="452" y="80" width="700" height="210" rx="18" fill="#E8F4F6" stroke="#187078" stroke-width="2"/>
+  <text x="802" y="114" text-anchor="middle" class="panel">Existing harness</text>
+  <rect x="485" y="137" width="190" height="98" rx="12" fill="#20808D" stroke="#187078" stroke-width="2"/>
+  <text x="580" y="172" text-anchor="middle" class="label light"><tspan x="580">Inventory prompts,</tspan><tspan x="580" dy="23">tools, and controls</tspan></text>
+  <rect x="705" y="137" width="205" height="98" rx="12" fill="#20808D" stroke="#187078" stroke-width="2"/>
+  <text x="808" y="163" text-anchor="middle" class="label light"><tspan x="808">Classify evidence</tspan><tspan x="808" dy="22">observed • declared</tspan><tspan x="808" dy="22">inferred • unknown</tspan></text>
+  <rect x="940" y="137" width="180" height="98" rx="12" fill="#E08A3C" stroke="#C47530" stroke-width="2"/>
+  <text x="1030" y="172" text-anchor="middle" class="label light"><tspan x="1030">Confirm intent,</tspan><tspan x="1030" dy="23">authority, and risk</tspan></text>
+  <path d="M675 186 H695 M910 186 H930" class="line"/>
+
+  <rect x="475" y="330" width="250" height="70" rx="14" fill="#13343B" stroke="#13343B" stroke-width="3"/>
+  <text x="600" y="372" text-anchor="middle" class="label light" font-size="18">Resolved HDP</text>
+  <path d="M314 227 C314 300 520 278 550 320" class="line"/>
+  <path d="M1030 235 C1030 300 680 278 650 320" class="line"/>
+
+  <text x="48" y="445" class="panel">Shared lifecycle</text>
+  <g>
+    <rect x="70" y="470" width="230" height="70" rx="12" fill="#20808D" stroke="#187078" stroke-width="2"/>
+    <text x="185" y="512" text-anchor="middle" class="label light">Validate in layers</text>
+    <rect x="410" y="470" width="260" height="70" rx="12" fill="#20808D" stroke="#187078" stroke-width="2"/>
+    <text x="540" y="500" text-anchor="middle" class="label light"><tspan x="540">Create binding without</tspan><tspan x="540" dy="23">widening authority</tspan></text>
+    <rect x="780" y="470" width="250" height="70" rx="12" fill="#20808D" stroke="#187078" stroke-width="2"/>
+    <text x="905" y="512" text-anchor="middle" class="label light">Implement or generate</text>
+    <path d="M300 505 H400 M670 505 H770" class="line"/>
+    <path d="M600 400 C600 448 185 430 185 460" class="line"/>
+
+    <rect x="780" y="590" width="250" height="70" rx="12" fill="#20808D" stroke="#187078" stroke-width="2"/>
+    <text x="905" y="632" text-anchor="middle" class="label light">Execute exact subject</text>
+    <rect x="410" y="590" width="260" height="70" rx="12" fill="#E08A3C" stroke="#C47530" stroke-width="2"/>
+    <text x="540" y="632" text-anchor="middle" class="label light">Evaluate independently</text>
+    <rect x="70" y="590" width="230" height="70" rx="12" fill="#2E7D32" stroke="#2E7D32" stroke-width="2"/>
+    <text x="185" y="632" text-anchor="middle" class="label light">Retain evidence</text>
+    <path d="M905 540 V580 M780 625 H680 M410 625 H310" class="line"/>
+
+    <rect x="245" y="720" width="245" height="70" rx="12" fill="#2E7D32" stroke="#2E7D32" stroke-width="2"/>
+    <text x="368" y="762" text-anchor="middle" class="label light">Monitor operation</text>
+    <rect x="655" y="710" width="300" height="90" rx="12" fill="#78909C" stroke="#607D8B" stroke-width="2"/>
+    <text x="805" y="745" text-anchor="middle" class="label light"><tspan x="805">Material change?</tspan><tspan x="805" dy="24">Reassess from the HDP</tspan></text>
+    <path d="M185 660 C185 700 368 680 368 710" class="line"/>
+    <path d="M490 755 H645" class="line"/>
+    <path d="M955 755 C1135 755 1140 365 735 365" class="dash"/>
+    <text x="1090" y="585" text-anchor="middle" class="small">reassess</text>
+  </g>
+  <text x="48" y="825" class="small">Independent evaluation applies to the exact model–harness–runtime–environment subject, not only to generated tests.</text>
+</svg>

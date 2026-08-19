@@ -3,6 +3,8 @@
 HDP can be adopted incrementally. A team does not need a generator or new
 runtime to gain value from the definition.
 
+![New and existing harness adoption paths converging on a resolved HDP, layered validation, binding, execution, independent evaluation, evidence, monitoring, and reassessment.](assets/adoption-lifecycle.svg)
+
 ## New harness
 
 1. Use the `create-hdp` skill or starter template to capture outcomes and

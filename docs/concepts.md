@@ -4,18 +4,7 @@ HDP separates concepts that are often collapsed into one configuration file.
 
 ## The outcome-bearing system
 
-```text
-model + harness + runtime + environment + task
-                         |
-                         v
-                 observable behavior
-                         |
-                         v
-               independent evaluation
-                         |
-                         v
-                   evidence + claims
-```
+![An HDP defines the contract for an outcome-bearing model, harness, runtime, environment, and task while independent evaluation produces evidence and qualified claims.](assets/hdp-at-a-glance.svg)
 
 The model performs inference. The harness controls how inference participates
 in work. The runtime enforces executable behavior. The environment supplies
@@ -34,13 +23,21 @@ An HDP distinguishes:
 Implementation mechanics do not establish intent. A repository containing a
 test runner does not prove the business outcome that runner is meant to serve.
 
+## Package anatomy
+
+The 24 top-level information families form six related domains. This grouping
+is informative; exact names, field types, and cardinalities come from the
+canonical schema.
+
+![The HDP information families grouped into intent and scope, capabilities and contracts, execution design, governance and controls, evaluation and assurance, and evolution and risk.](assets/hdp-package-anatomy.svg)
+
 ## Traceability
 
-The core trace is:
+The core trace connects outcomes to requirements, implementation, tests,
+evidence, and qualified claims. Conformance and assurance remain distinct
+layers.
 
-```text
-outcome -> requirement -> component -> test -> evidence
-```
+![The HDP traceability spine and the six assurance layers from structural validation through operational assurance.](assets/traceability-and-assurance.svg)
 
 Each arrow has a typed meaning. A component can implement a requirement; a test
 can verify a component or requirement; evidence can be produced by a test.

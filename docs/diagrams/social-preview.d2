@@ -1,0 +1,68 @@
+direction: right
+
+identity: {
+  label: "Harness Definition Package"
+  direction: down
+  style.fill: "#13343B"
+  style.stroke: "#13343B"
+  style.font-color: "#FFFFFF"
+  style.stroke-width: 3
+  style.font-size: 28
+
+  title: {
+    label: "HDP"
+    shape: circle
+    style.fill: "#20808D"
+    style.stroke: "#187078"
+    style.font-color: "#FFFFFF"
+    style.stroke-width: 3
+    style.font-size: 26
+  }
+  subtitle: "A machine-readable contract\nfor specifying and evaluating AI harnesses"
+  status: "Draft 0.1 • Provider-neutral"
+}
+
+story: {
+  label: "From intent to evidence"
+  direction: right
+  style.fill: "#FFFFFF"
+  style.stroke: "#CBD5DA"
+  style.font-size: 24
+
+  intent: {
+    label: "Intent\nContext\nConstraints"
+    style.fill: "#78909C"
+    style.stroke: "#607D8B"
+    style.font-color: "#FFFFFF"
+  }
+  hdp: {
+    label: "HDP\ncontract"
+    style.fill: "#13343B"
+    style.stroke: "#13343B"
+    style.font-color: "#FFFFFF"
+    style.stroke-width: 2
+  }
+  system: {
+    label: "Model + harness\n+ runtime"
+    style.fill: "#20808D"
+    style.stroke: "#187078"
+    style.font-color: "#FFFFFF"
+  }
+  evaluator: {
+    label: "Independent\nevaluation"
+    style.fill: "#E08A3C"
+    style.stroke: "#C47530"
+    style.font-color: "#FFFFFF"
+  }
+  evidence: {
+    label: "Evidence"
+    shape: cylinder
+    style.fill: "#2E7D32"
+    style.stroke: "#2E7D32"
+    style.font-color: "#FFFFFF"
+  }
+
+  intent -> hdp -> system -> evaluator -> evidence
+}
+
+identity -> story
