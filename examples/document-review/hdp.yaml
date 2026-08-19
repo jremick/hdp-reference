@@ -1,0 +1,208 @@
+hdpVersion: 0.1.0
+kind: HarnessDefinition
+metadata:
+  id: urn:hdp:example:document-review
+  name: document-review-harness
+  title: Controlled document-review HDP
+  version: 1.0.0
+  status: draft
+  owners:
+    - {id: urn:principal:example-owner, name: Example owner, role: Owner}
+  provenance:
+    createdAt: '2026-08-12T00:00:00Z'
+    createdBy: HDP reference project
+    sources: []
+purpose:
+  summary: Produce an evidence-grounded review summary for a bounded document set.
+  targetUsers:
+    - {id: USER-OPERATOR, name: Review owner, statement: Uses the summary to decide which document findings require human follow-up.}
+  intendedOutcomes:
+    - id: OUTCOME-REVIEW-USABLE
+      statement: The summary covers every required document, cites its sources, and separates findings from uncertainty.
+      measureIds: [MEASURE-ACCEPTANCE]
+      timeHorizon: one review batch
+  nonGoals: [Making the final human decision., Modifying source documents.]
+  excludedUses: [Documents containing secrets or regulated data without an approved handling profile.]
+operationalContext:
+  environments:
+    - id: ENV-LOCAL
+      name: Controlled review workspace
+      description: Read-only document set and writable summary workspace.
+      constraints: [No network., Source documents remain unchanged.]
+  taskDistribution:
+    - id: TASK-DOCUMENT-REVIEW
+      description: Review one to twenty text-readable documents against a declared review question.
+      expectedFrequency: several batches per month
+      criticality: medium
+  assumptions: []
+  dependencies: []
+  exclusions: []
+success:
+  measures:
+    - id: MEASURE-ACCEPTANCE
+      name: Review acceptance result
+      definition: Whether independent checks confirm document coverage, citation validity, and explicit uncertainty.
+      method: Deterministic citation and coverage checks plus human review of finding support.
+      direction: target
+      unit: boolean
+  thresholds:
+    - {id: THRESHOLD-ACCEPTANCE, measureId: MEASURE-ACCEPTANCE, operator: eq, value: true, gate: hard}
+  acceptanceCriteria:
+    - id: ACCEPTANCE-REVIEW
+      statement: Independent coverage and citation checks pass and the review owner accepts the supported findings.
+      requirementIds: [REQ-REVIEW]
+      evaluatorIds: [EVALUATOR-EXTERNAL]
+requirements:
+  - id: REQ-REVIEW
+    category: functional
+    priority: must
+    statement: The harness MUST produce a summary whose findings cite the supplied documents and whose unsupported questions remain explicit.
+    rationale: Decisions should be grounded in the reviewed source set rather than unsupported model recall.
+    verificationIds: [TEST-EXTERNAL]
+    status: accepted
+models:
+  capabilityRequirements:
+    - {id: MODEL-CAPABILITY-TASK, capability: 'Compare documents, extract supported findings, preserve citations, and identify uncertainty.', minimum: Model capable of the declared document formats and review language.}
+  providerConstraints: []
+  routing: {strategy: Use one declared capable model., fallback: stop, downshiftAllowed: false}
+contracts:
+  inputs:
+    - {id: ARTIFACT-DOCUMENTS, name: Review document set, mediaType: application/octet-stream, classification: internal, required: true}
+    - {id: ARTIFACT-QUESTION, name: Review question, mediaType: text/plain, classification: internal, required: true}
+  outputs:
+    - {id: ARTIFACT-SUMMARY, name: Evidence-grounded review summary, mediaType: text/markdown, classification: internal, required: true}
+  artifacts:
+    - {id: ARTIFACT-EVIDENCE, name: Citation and acceptance evidence, mediaType: application/json, classification: internal, required: true}
+  interfaces: []
+context:
+  constructionRules:
+    - {id: CONTEXT-RULE-TASK, name: Review context, statement: Use only the declared review question and supplied document set as factual sources.}
+  knowledgeSources: []
+  conflictPolicy: Report conflicting document claims with citations; stop when instruction conflict changes the allowed review scope.
+tools:
+  interfaces:
+    - {id: TOOL-DOCUMENTS, name: Document reader, kind: library, purpose: Read the supplied document set and resolve citation locations., sideEffects: none}
+  externalSystems: []
+orchestration:
+  roles:
+    - id: ROLE-REVIEWER
+      name: Document reviewer
+      responsibilities: [Review every supplied document., Produce cited findings., Record uncertainty and contradictions.]
+      toolIds: [TOOL-DOCUMENTS]
+      prohibitedActions: [Network or external writes.]
+  stages:
+    - id: STAGE-REVIEW
+      name: Review and verify
+      roleIds: [ROLE-REVIEWER]
+      entryCriteria: [Review question and document set are available.]
+      exitCriteria: [Coverage and citation verification passes and required human approval is recorded.]
+      next: []
+  delegation: {allowed: false, maxDepth: 0, maxConcurrent: 0, permissionEscalationAllowed: false}
+state:
+  workingState: {format: markdown, location: STATE.md, checkpointTriggers: [After verification.]}
+  durableMemory: {enabled: false, scope: none, retention: None., writeCriteria: Never.}
+  lifecycle:
+    - {id: LIFECYCLE-RUN, name: Run, statement: Create a disposable workspace and close it after evaluation.}
+governance:
+  permissions:
+    default: deny
+    filesystem: {read: ['.'], write: ['.']}
+    network: {allowed: false, destinations: []}
+    tools: {allowedIds: [TOOL-DOCUMENTS]}
+    prohibitedActions:
+      - {id: PROHIBITION-EXTERNAL, action: external writes, reason: Outside declared scope.}
+  dataClassifications:
+    - {id: DATA-INTERNAL, name: internal, handling: Keep inside the local fixture.}
+  approvals:
+    - {id: APPROVAL-REVIEW, trigger: Accept final review summary., approver: Review owner, failClosed: true}
+resources:
+  budgets:
+    - {id: BUDGET-WALLTIME, resource: wall-time, limit: 300, unit: seconds, hard: true}
+  timeouts:
+    - {id: TIMEOUT-COMMAND, scope: each command, seconds: 60, onExpiry: stop}
+  rateLimits: []
+  stoppingConditions:
+    - {id: STOP-PROHIBITED, statement: A prohibited capability is required., action: stop}
+failures:
+  taxonomy:
+    - {id: FAILURE-CHECK, name: Verification failure, category: evaluation, detection: Required check fails., effect: No completion claim., severity: high}
+  recoveryPolicies:
+    - {id: RECOVERY-STOP, statement: Preserve evidence and stop., failureIds: [FAILURE-CHECK], maxAttempts: 0}
+  escalations: []
+observability:
+  trace: {enabled: true, correlationId: Per-run ID., redaction: Exclude secrets., retention: Project evidence lifetime.}
+  events:
+    - {id: EVENT-CHECK, name: Check completed, when: After verification., fields: [command, exitCode, digest]}
+  interventions: []
+safety:
+  securityControls:
+    - {id: CONTROL-DENY, statement: Deny undeclared capabilities., verificationIds: [TEST-EXTERNAL]}
+  privacyControls:
+    - {id: CONTROL-NO-SECRETS, statement: 'Do not include credentials or secrets in specifications, generated artifacts, or evidence.', verificationIds: [TEST-EXTERNAL]}
+  safetyConstraints: []
+  compliance: []
+evaluation:
+  boundary:
+    external: true
+    harnessAccess: prohibited
+    evaluatorWriteAccess: evidence-only
+    hiddenMaterialPolicy: Hidden cases remain outside the model-harness system.
+  datasets: []
+  fixtures: []
+  scenarios:
+    - {id: SCENARIO-DOCUMENT-REVIEW, name: Bounded document review, taskClassId: TASK-DOCUMENT-REVIEW, fixtureIds: [], expectedOutcomeIds: [OUTCOME-REVIEW-USABLE]}
+  metrics:
+    - {id: METRIC-PASS, name: Acceptance result, method: Deterministic coverage and citation checks combined with a separately recorded human decision., deterministic: false, measureId: MEASURE-ACCEPTANCE}
+  evaluators:
+    - {id: EVALUATOR-EXTERNAL, name: Independent review evaluator, method: hybrid, independence: external, metricIds: [METRIC-PASS], repetitions: 1, aggregation: All hard checks pass and the review owner accepts., uncertainty: Human acceptance and unresolved document conflicts remain in the evidence.}
+  tests:
+    - id: TEST-EXTERNAL
+      name: External acceptance
+      type: functional
+      visibility: hidden
+      evaluatorId: EVALUATOR-EXTERNAL
+      scenarioIds: [SCENARIO-DOCUMENT-REVIEW]
+      requirementIds: [REQ-REVIEW]
+      expected: All supplied documents are covered, citations resolve, unsupported findings are absent, and human approval is recorded.
+      evidenceArtifactId: ARTIFACT-EVIDENCE
+  negativeTests: [{testId: TEST-EXTERNAL}]
+  adversarialTests: [{testId: TEST-EXTERNAL}]
+  regressionTests: [{testId: TEST-EXTERNAL}]
+runtime:
+  profile: {id: document-review-controlled, type: general, version: 1.0.0, conformance: controlled}
+  deploymentTargets:
+    - {id: RUNTIME-DOCUMENT-REVIEW, os: portable, architecture: portable, runtime: Compatible agent runtime, dependencyLock: Runtime-specific lock or image digest.}
+  sandbox: {mode: os, network: deny, filesystemPolicy: workspace-write}
+monitoring:
+  baselines: []
+  driftRules:
+    - {id: DRIFT-SUBJECT, statement: 'Re-evaluate when the model, harness, runtime, or evaluator changes.', measureId: MEASURE-ACCEPTANCE, response: re-evaluate}
+  alerts:
+    - {id: ALERT-REGRESSION, statement: Treat a failed regression as release blocking., owner: Example owner}
+  reassessmentTriggers:
+    - {id: REASSESS-CHANGE, name: Subject change, statement: 'Re-evaluate after a material model, harness, runtime, or evaluator change.'}
+traceability:
+  nodes:
+    - {id: TRACE-OUTCOME, kind: outcome, ref: OUTCOME-REVIEW-USABLE}
+    - {id: TRACE-REQUIREMENT, kind: requirement, ref: REQ-REVIEW}
+    - {id: TRACE-COMPONENT, kind: component, ref: ARTIFACT-SUMMARY}
+    - {id: TRACE-TEST, kind: test, ref: TEST-EXTERNAL}
+    - {id: TRACE-EVIDENCE, kind: evidence, ref: ARTIFACT-EVIDENCE}
+  edges:
+    - {id: EDGE-OUTCOME-REQUIREMENT, from: TRACE-OUTCOME, relation: decomposedInto, to: TRACE-REQUIREMENT}
+    - {id: EDGE-REQUIREMENT-COMPONENT, from: TRACE-REQUIREMENT, relation: implementedBy, to: TRACE-COMPONENT}
+    - {id: EDGE-COMPONENT-TEST, from: TRACE-COMPONENT, relation: verifiedBy, to: TRACE-TEST}
+    - {id: EDGE-TEST-EVIDENCE, from: TRACE-TEST, relation: produces, to: TRACE-EVIDENCE}
+evolution:
+  compatibility: {policy: semantic-versioning, breakingChangeRule: Breaking semantics require a major version.}
+  changeControl: {owner: Example owner, approval: Owner review., regressionRequired: true}
+  deprecations: []
+limitations: []
+risks:
+  - id: RISK-SCOPE
+    statement: This example does not establish fitness for sensitive, regulated, image-only, or adversarial document sets.
+    likelihood: medium
+    impact: medium
+    treatment: Restrict use to the declared document types and require a separate profile and evaluation for sensitive domains.
+    residual: Broader task distributions and high-stakes review remain untested.
+extensions: {}

@@ -1,0 +1,27 @@
+# Informative Draft 0.1 example; not a normative binding schema.
+bindingVersion: 0.1.0
+hdp:
+  id: urn:hdp:example:minimal
+  version: 1.0.0
+target:
+  id: example-agent-runtime
+  type: general-agent-runtime
+  version: replace-with-observed-version
+capabilities:
+  MODEL-CAPABILITY-TASK:
+    targetRef: runtime:model-route
+    compatibility: requires-review
+  TOOL-LOCAL:
+    targetRef: runtime:bounded-command-tool
+    compatibility: requires-review
+authority:
+  mayWidenHdpPermissions: false
+  externallyEnforced:
+    - filesystem
+    - network
+    - process
+    - wall-time
+translation:
+  droppedSemantics: []
+  approximations: []
+  unresolvedRequirements: []

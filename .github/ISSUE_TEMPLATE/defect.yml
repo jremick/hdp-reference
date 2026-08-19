@@ -1,0 +1,24 @@
+name: Specification defect
+description: Report an inconsistency, ambiguity, broken example, or validation defect
+title: "[defect] "
+labels: [defect]
+body:
+  - type: textarea
+    id: location
+    attributes:
+      label: Affected artifact or section
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed problem
+      description: Include the smallest safe reproduction or conflicting clauses.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected interpretation
+    validations:
+      required: true

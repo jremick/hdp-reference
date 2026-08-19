@@ -1,0 +1,33 @@
+name: Specification change
+description: Propose a general HDP contract change or missing use case
+title: "[proposal] "
+labels: [specification]
+body:
+  - type: textarea
+    id: use-case
+    attributes:
+      label: General use case
+      description: Describe the outcome or interoperability problem independently of a particular provider.
+    validations:
+      required: true
+  - type: textarea
+    id: gap
+    attributes:
+      label: Current gap
+      description: Explain why the current field model, semantic rules, profile, or extension mechanism is insufficient.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed semantics
+      description: Describe the proposed contract behavior, not only a serialization change.
+    validations:
+      required: true
+  - type: textarea
+    id: consequences
+    attributes:
+      label: Compatibility and assurance consequences
+      description: Cover migration, permissions, evaluation, evidence, security, privacy, and implementation impact.
+    validations:
+      required: true

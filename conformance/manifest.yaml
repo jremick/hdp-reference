@@ -1,0 +1,26 @@
+schemaVersion: 0.1.0
+cases:
+  - id: VALID-MINIMAL
+    path: ../examples/minimal/hdp.yaml
+    expectedLayer: baseline-semantic
+    expectedStatus: pass
+  - id: VALID-SOFTWARE-DEVELOPMENT
+    path: ../examples/software-development/hdp.yaml
+    expectedLayer: baseline-semantic
+    expectedStatus: pass
+  - id: VALID-DOCUMENT-REVIEW
+    path: ../examples/document-review/hdp.yaml
+    expectedLayer: baseline-semantic
+    expectedStatus: pass
+  - id: INVALID-DUPLICATE-KEY
+    path: invalid/duplicate-key.yaml
+    expectedLayer: transport
+    expectedStatus: fail
+  - id: INVALID-MISSING-REQUIRED
+    path: invalid/missing-required.yaml
+    expectedLayer: structural
+    expectedStatus: fail
+  - id: INVALID-UNRESOLVED-REFERENCE
+    path: invalid/unresolved-reference.yaml
+    expectedLayer: baseline-semantic
+    expectedStatus: fail

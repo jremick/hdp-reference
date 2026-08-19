@@ -1,0 +1,13 @@
+schemaVersion: 0.1.0
+sourceRoot: path/to/harness
+assessments:
+  - pointer: /purpose/summary
+    value: Replace with the exact reconstructed value.
+    status: unknown
+    claimClass: absent-or-unknowable
+    confidence: 0.0
+    evidence: []
+    contradictions: []
+    missingEvidence:
+      - Authoritative purpose statement.
+    humanConfirmationRequired: true
