@@ -4,9 +4,10 @@
   complete controlled-profile example. It uses a generic bounded local task.
 - [`document-review/hdp.yaml`](document-review/hdp.yaml) demonstrates a
   non-software, human-in-the-loop document-review harness.
-- [`software-development/hdp.yaml`](software-development/hdp.yaml) is a fuller
-  provider-neutral software-development example with independent evaluation,
-  permissions, failure handling, monitoring, and traceability.
+- [`software-development/`](software-development/) is a worked AI-SDLC example.
+  Its complete provider-neutral HDP covers independent evaluation,
+  permissions, failure handling, monitoring, and traceability; the companion
+  guide explains how an implementation would bind, operate, and evaluate it.
 
 Examples are informative. They demonstrate the schema but do not establish
 universal defaults, implementation fitness, or certification. A domain example
