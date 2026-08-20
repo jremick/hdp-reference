@@ -1,14 +1,19 @@
 # Harness Definition Package
 
-**A draft, implementation-neutral specification for describing what an AI
-harness is intended to achieve, how it may operate, and how its outcomes should
-be independently evaluated.**
+**A draft, implementation-neutral specification for defining agentic and AI
+harnesses in a consistent, machine-readable form.**
 
-An HDP is a versioned, machine-readable contract that connects intended
-outcomes, requirements, operating context, model capabilities, tools,
-orchestration, permissions, evaluation, evidence, risks, and change control.
-It gives people, models, runtimes, generators, and evaluators a shared source of
-truth without prescribing a particular provider or agent framework.
+The key idea is normalisation. Harness intent and operating rules are often
+scattered across prompts, tool configuration, workflow code, permissions,
+tests, and documentation. HDP brings those concerns into one versioned contract
+covering intended outcomes, requirements, operating context, capabilities,
+orchestration, governance, evaluation, evidence, risks, and change control.
+
+That shared structure makes the same harness concepts easier to review, repeat,
+transfer between implementations, compare, regenerate, and re-evaluate. Its aim
+is to make harness design more repeatable and improve the likelihood that the
+resulting system continues to achieve its declared outcomes, without prescribing
+a particular model provider, agent framework, runtime, or tool protocol.
 
 > **Draft 0.1:** HDP is an early community specification proposed for
 > experimentation and feedback. It is not an accredited standard,
@@ -32,8 +37,11 @@ such as:
 HDP makes those relationships explicit and machine-readable.
 
 <p align="center">
-  <img src="docs/assets/hdp-at-a-glance.svg" width="880" alt="HDP connects intended outcomes, environment, and constraints to a bound model-harness-runtime system and an independent evaluator that produces evidence and qualified claims."/>
+  <img src="docs/assets/hdp-at-a-glance.svg" width="880" alt="An HDP normalises intended outcomes, requirements, environment, tasks, constraints, and authority. It branches into an implementation binding and a public acceptance contract. Observable behaviour from the bound system and the public contract feed an independent evaluator that produces provenance-linked evidence."/>
 </p>
+
+*This visual is informative. The specification, schema, ontology, and semantic
+rules remain authoritative.*
 
 The evaluator is deliberately outside the model-harness system. Hidden cases,
 answers, evaluator-only prompts, and acceptance secrets are not part of an HDP
@@ -61,24 +69,29 @@ See the [visual package anatomy](docs/assets/hdp-package-anatomy.svg) for how th
 
 ## Quick start
 
-Start from the smallest complete template:
+Point your AI at this repository and describe the harness you want to define.
+Ask it to read and follow the [`create-hdp` skill](skills/create-hdp/SKILL.md).
+You do not need to choose a model provider or agent framework first.
 
-```bash
-cp templates/hdp-starter.yaml my-harness.hdp.yaml
-```
+Start by telling the AI:
 
-Edit the purpose, outcomes, requirements, operating context, capabilities,
-permissions, evaluation contract, and traceability graph. Then run the
-repository's reference checks:
+- what outcome the harness should achieve and for whom;
+- where it will operate and what kinds of tasks it will handle;
+- what it may access, change, or must never do; and
+- how success should be measured independently.
 
-```bash
-python3 -m venv .venv
-.venv/bin/pip install -r requirements-validation.txt
-.venv/bin/python scripts/validate_reference.py
-```
+For example:
 
-The validation script is repository maintenance tooling. It is not a harness
-runtime or a normative implementation of every semantic rule.
+> Read this repository and use `skills/create-hdp` to draft an HDP for the
+> harness I describe. Ask me about missing outcomes, permissions, constraints,
+> and acceptance thresholds. Keep unknowns explicit, do not invent business
+> intent, and validate the completed definition before presenting it.
+
+If you already have a harness, give your AI access to both this repository and
+the existing harness, then ask it to follow
+[`analyse-existing-harness`](skills/analyse-existing-harness/SKILL.md). It
+should return an evidence-qualified HDP, contradictions, omissions, confidence,
+and the human decisions still required.
 
 ## Use the Agent Skills
 

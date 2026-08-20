@@ -1,61 +1,72 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 735" role="img" aria-labelledby="title desc">
   <title id="title">Harness Definition Package at a glance</title>
-  <desc id="desc">Intent, environment, and constraints are defined in an HDP. A binding realises an outcome-bearing model, harness, runtime, environment, and task. Observable behaviour and the public acceptance contract go to an independent evaluator, which produces evidence and qualified claims.</desc>
+  <desc id="desc">Intent and operating context are normalised into a versioned Harness Definition Package. The HDP branches into an implementation path and a public evaluation contract. A binding maps the definition to an outcome-bearing model, harness, runtime, environment, and task. The resulting observable behaviour and the public acceptance contract are both passed to an independent evaluator, which produces a provenance-linked evidence record.</desc>
   <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#37474F"/>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#37474F"/>
     </marker>
     <style>
-      .title{font:700 30px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#13343B}.subtitle{font:16px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#546E7A}.section{font:600 17px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#13343B}.label{font:600 16px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.small{font:14px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#546E7A}.light{fill:#FFFFFF}.dark{fill:#13343B}.line{fill:none;stroke:#37474F;stroke-width:2;marker-end:url(#arrow)}.dash{fill:none;stroke:#607D8B;stroke-width:2;stroke-dasharray:7 6;marker-end:url(#arrow)}
+      text{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+      .title{font-size:32px;font-weight:700;fill:#13343B}
+      .subtitle{font-size:19px;fill:#546E7A}
+      .section{font-size:22px;font-weight:700;fill:#13343B}
+      .label{font-size:20px;font-weight:650}
+      .detail{font-size:17px;font-weight:500}
+      .light{fill:#FFFFFF}.dark{fill:#13343B}.muted{fill:#546E7A}
+      .line{fill:none;stroke:#37474F;stroke-width:2.5;stroke-linejoin:round;marker-end:url(#arrow)}
     </style>
   </defs>
-  <rect width="1200" height="680" fill="#FFFFFF"/>
-  <text x="48" y="52" class="title">HDP at a glance</text>
-  <text x="48" y="80" class="subtitle">From intended outcomes to independently evaluated evidence</text>
 
-  <rect x="48" y="118" width="300" height="144" rx="16" fill="#ECEEF0" stroke="#607D8B" stroke-width="2"/>
-  <text x="198" y="151" text-anchor="middle" class="section">Define the intent</text>
-  <text x="198" y="184" text-anchor="middle" class="label dark">
-    <tspan x="198">Intended outcomes</tspan><tspan x="198" dy="25">Environment and tasks</tspan><tspan x="198" dy="25">Constraints and authority</tspan>
-  </text>
+  <rect width="1200" height="735" fill="#FFFFFF"/>
+  <text x="50" y="48" class="title">HDP at a glance</text>
+  <text x="50" y="78" class="subtitle">A normalised definition connects intent, implementation, independent evaluation, and evidence</text>
 
-  <rect x="450" y="136" width="300" height="108" rx="16" fill="#13343B" stroke="#13343B" stroke-width="3"/>
-  <text x="600" y="181" text-anchor="middle" class="label light" font-size="21">Harness Definition</text>
-  <text x="600" y="210" text-anchor="middle" class="label light" font-size="21">Package</text>
-  <path d="M348 190 H440" class="line"/>
-  <text x="395" y="176" text-anchor="middle" class="small">make explicit</text>
+  <text x="50" y="125" class="section">1. Define and normalise</text>
+  <rect x="40" y="150" width="340" height="120" rx="15" fill="#ECEEF0" stroke="#607D8B" stroke-width="2"/>
+  <text x="210" y="184" text-anchor="middle" class="label dark">Intent and operating context</text>
+  <text x="210" y="215" text-anchor="middle" class="detail muted">Outcomes · requirements · constraints</text>
+  <text x="210" y="242" text-anchor="middle" class="detail muted">Environment · tasks · authority</text>
 
-  <rect x="48" y="342" width="522" height="286" rx="18" fill="#E8F4F6" stroke="#187078" stroke-width="2"/>
-  <text x="309" y="377" text-anchor="middle" class="section">Outcome-bearing system</text>
-  <rect x="88" y="406" width="190" height="58" rx="12" fill="#78909C" stroke="#607D8B" stroke-width="2"/>
-  <text x="183" y="441" text-anchor="middle" class="label light">Implementation binding</text>
-  <rect x="320" y="398" width="210" height="76" rx="12" fill="#20808D" stroke="#187078" stroke-width="2"/>
-  <text x="425" y="428" text-anchor="middle" class="label light">Model + harness + runtime</text>
-  <text x="425" y="452" text-anchor="middle" class="label light">+ environment + task</text>
-  <rect x="183" y="535" width="230" height="58" rx="12" fill="#FFFFFF" stroke="#187078" stroke-width="2"/>
-  <text x="298" y="570" text-anchor="middle" class="label dark">Observable behaviour</text>
-  <path d="M278 435 H310" class="line"/>
-  <path d="M425 474 C425 510 298 500 298 525" class="line"/>
+  <rect x="420" y="140" width="360" height="140" rx="15" fill="#13343B" stroke="#13343B" stroke-width="3"/>
+  <text x="600" y="197" text-anchor="middle" class="label light">Harness Definition Package</text>
+  <text x="600" y="229" text-anchor="middle" class="detail light">Versioned · standardised</text>
+  <text x="600" y="255" text-anchor="middle" class="detail light">Machine-readable contract</text>
+  <path d="M380 210 H420" class="line"/>
 
-  <rect x="638" y="318" width="514" height="310" rx="18" fill="#FFF3E0" stroke="#C47530" stroke-width="2" stroke-dasharray="9 7"/>
-  <text x="895" y="353" text-anchor="middle" class="section">Independent evaluation boundary</text>
-  <rect x="680" y="397" width="195" height="66" rx="12" fill="#FFFFFF" stroke="#C47530" stroke-width="2"/>
-  <text x="778" y="424" text-anchor="middle" class="label dark">Public acceptance</text>
-  <text x="778" y="447" text-anchor="middle" class="label dark">contract</text>
-  <rect x="920" y="397" width="185" height="66" rx="12" fill="#E08A3C" stroke="#C47530" stroke-width="2"/>
-  <text x="1013" y="424" text-anchor="middle" class="label light">Independent</text>
-  <text x="1013" y="447" text-anchor="middle" class="label light">evaluator</text>
-  <rect x="818" y="526" width="236" height="72" rx="36" fill="#2E7D32" stroke="#2E7D32" stroke-width="2"/>
-  <text x="936" y="555" text-anchor="middle" class="label light">Evidence + qualified</text>
-  <text x="936" y="579" text-anchor="middle" class="label light">claims</text>
-  <path d="M875 430 H910" class="line"/>
-  <path d="M1013 463 C1013 494 936 492 936 516" class="line"/>
+  <rect x="50" y="330" width="520" height="370" rx="18" fill="#E8F4F6" stroke="#187078" stroke-width="2"/>
+  <text x="76" y="370" class="section">2. Bind and operate</text>
 
-  <path d="M560 244 C560 300 183 300 183 396" class="line"/>
-  <text x="335" y="290" text-anchor="middle" class="small">bind or generate</text>
-  <path d="M640 244 C640 288 778 298 778 387" class="dash"/>
-  <text x="752" y="288" text-anchor="middle" class="small">evaluation contract</text>
-  <path d="M413 564 C620 564 770 500 1013 474" class="line"/>
-  <text x="638" y="546" text-anchor="middle" class="small">observable behaviour</text>
-  <text x="48" y="660" class="small">Informative visual — the specification, schema, ontology, and semantic rules remain authoritative.</text>
+  <rect x="75" y="397" width="180" height="76" rx="12" fill="#546E7A" stroke="#455A64" stroke-width="2"/>
+  <text x="165" y="427" text-anchor="middle" class="label light">Implementation</text>
+  <text x="165" y="453" text-anchor="middle" class="label light">binding</text>
+
+  <rect x="290" y="385" width="260" height="100" rx="12" fill="#20808D" stroke="#187078" stroke-width="2"/>
+  <text x="420" y="417" text-anchor="middle" class="label light">Outcome-bearing system</text>
+  <text x="420" y="447" text-anchor="middle" class="detail light">Model + harness + runtime</text>
+  <text x="420" y="472" text-anchor="middle" class="detail light">+ environment + task</text>
+
+  <rect x="290" y="540" width="260" height="76" rx="12" fill="#FFFFFF" stroke="#187078" stroke-width="2"/>
+  <text x="420" y="586" text-anchor="middle" class="label dark">Observable behaviour</text>
+
+  <rect x="620" y="330" width="530" height="370" rx="18" fill="#FFF3E0" stroke="#C47530" stroke-width="2" stroke-dasharray="9 7"/>
+  <text x="646" y="370" class="section">3. Evaluate independently</text>
+
+  <rect x="670" y="385" width="220" height="88" rx="12" fill="#FFFFFF" stroke="#C47530" stroke-width="2"/>
+  <text x="780" y="420" text-anchor="middle" class="label dark">Public acceptance</text>
+  <text x="780" y="449" text-anchor="middle" class="label dark">contract</text>
+
+  <rect x="870" y="515" width="250" height="92" rx="12" fill="#E08A3C" stroke="#C47530" stroke-width="2"/>
+  <text x="995" y="551" text-anchor="middle" class="label dark">Independent evaluator</text>
+  <text x="995" y="580" text-anchor="middle" class="detail dark">Outside the harness</text>
+
+  <rect x="850" y="630" width="290" height="52" rx="26" fill="#2E7D32" stroke="#2E7D32" stroke-width="2"/>
+  <text x="995" y="662" text-anchor="middle" class="label light">Provenance-linked evidence</text>
+
+  <path d="M525 280 V300 H60 V435 H75" class="line"/>
+  <path d="M675 280 V300 H910 V429 H890" class="line"/>
+  <path d="M255 435 H290" class="line"/>
+  <path d="M420 485 V540" class="line"/>
+  <path d="M780 473 V490 H995 V515" class="line"/>
+  <path d="M550 578 H870" class="line"/>
+  <path d="M995 607 V630" class="line"/>
 </svg>
