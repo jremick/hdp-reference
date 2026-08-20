@@ -41,6 +41,7 @@ information is simply unknown.
 
 ## Where is the runnable implementation?
 
-[`jremick/harness-factory`](https://github.com/jremick/harness-factory) contains
-an experimental implementation. This repository remains the versioned draft
-contract and adoption surface.
+Runnable implementations are separate from the standard and may target
+different providers, runtimes, and assurance profiles. This repository remains
+the versioned draft contract and adoption surface; no individual compiler or
+factory is normative.

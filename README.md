@@ -118,9 +118,10 @@ MCP, A2A, OpenAPI, Agent Spec, Agent Skills, or provider-specific formats may be
 used as interoperability surfaces. None is the root HDP model, and none is
 required for conformance.
 
-[`jremick/harness-factory`](https://github.com/jremick/harness-factory) is an
-initial implementation and experimental compiler for HDP. It is non-normative:
-the specification in this repository defines the contract, not the factory.
+Implementations may compile or map HDPs into concrete harnesses for different
+providers and runtimes. Those implementations are non-normative: the
+specification in this repository defines the contract, not any one compiler or
+factory.
 
 ## Documentation
 
