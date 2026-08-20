@@ -57,6 +57,17 @@ MACHINE_PATHS = (
     "Documents" + "/" + "New project",
 )
 MARKDOWN_LINK = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
+ACTION = re.compile(r"^\s*uses:\s*([^\s@]+)@([^\s#]+)", re.MULTILINE)
+COMMIT_SHA = re.compile(r"[0-9a-f]{40}")
+REQUIRED_PUBLIC_FILES = (
+    "README.md",
+    "LICENSE",
+    "SECURITY.md",
+    "SUPPORT.md",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md",
+    ".github/workflows/validate.yml",
+)
 
 
 class StrictLoader(yaml.SafeLoader):
@@ -230,6 +241,9 @@ def check_provider_neutrality() -> list[str]:
 
 def check_public_surface() -> list[str]:
     errors: list[str] = []
+    for relative in REQUIRED_PUBLIC_FILES:
+        if not (ROOT / relative).is_file():
+            errors.append(f"missing required public file: {relative}")
     for path in ROOT.rglob("*"):
         if not path.is_file() or ".git" in path.parts or ".venv" in path.parts:
             continue
@@ -239,6 +253,19 @@ def check_public_surface() -> list[str]:
         for marker in MACHINE_PATHS:
             if marker in text:
                 errors.append(f"machine-specific path marker {marker!r} in {path.relative_to(ROOT)}")
+    return errors
+
+
+def check_actions_pinned() -> list[str]:
+    errors: list[str] = []
+    workflows = ROOT / ".github" / "workflows"
+    for path in workflows.glob("*.y*ml"):
+        for action, revision in ACTION.findall(path.read_text(encoding="utf-8")):
+            if COMMIT_SHA.fullmatch(revision) is None:
+                errors.append(
+                    f"GitHub Action is not pinned to a commit in "
+                    f"{path.relative_to(ROOT)}: {action}@{revision}"
+                )
     return errors
 
 
@@ -320,6 +347,7 @@ def main() -> int:
     errors.extend(check_portable_asset_copies())
     errors.extend(check_provider_neutrality())
     errors.extend(check_public_surface())
+    errors.extend(check_actions_pinned())
     errors.extend(check_markdown_links())
     conformance_errors, conformance_cases = check_conformance_cases(validator)
     errors.extend(conformance_errors)
