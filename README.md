@@ -147,6 +147,8 @@ claim more than the exact validation layers and profile it has demonstrated.
 
 - [Contributing](CONTRIBUTING.md) explains proposal and compatibility
   expectations.
+- [Support](SUPPORT.md) explains the experimental support boundary and where to
+  ask questions.
 - GitHub Issues are intended for specification defects, use cases, examples,
   and concrete change proposals.
 - [Security policy](SECURITY.md) explains how to report vulnerabilities or
