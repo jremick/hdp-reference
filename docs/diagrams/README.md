@@ -10,9 +10,10 @@ rules remain the normative sources.
 | `../assets/hdp-package-anatomy.svg` | same file | Core information families |
 | `../assets/traceability-and-assurance.svg` | same file | Trace spine and assurance layers |
 | `../assets/adoption-lifecycle.svg` | same file | New and existing harness adoption |
+| `../../examples/software-development/assets/ai-sdlc-assurance-loop.svg` | same file | Worked AI-SDLC implementation and independent-evaluation path |
 | `social-preview.d2` | `../../assets/social-preview.png` | GitHub social-preview source |
 
-The four documentation SVGs are self-contained editable sources with fixed view
-boxes and accessible descriptions. The social preview is rendered from D2.
-Assets MUST be inspected at their intended display size before they are
-committed.
+The documentation and worked-example SVGs are self-contained editable sources
+with fixed view boxes and accessible descriptions. The social preview is
+rendered from D2. Assets MUST be inspected at their intended display size
+before they are committed.

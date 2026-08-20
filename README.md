@@ -58,8 +58,9 @@ that the harness can consume.
   conceptual model.
 - [Profiles](profiles/) — provider-neutral assurance and domain overlays.
 - [Templates](templates/) — provider-neutral starting points.
-- [Examples](examples/) — minimal, document-review, and software-development
-  definitions.
+- [Examples](examples/) — minimal and document-review definitions, plus a
+  [worked AI-SDLC example](examples/software-development/) that follows a
+  provider-neutral HDP from intended outcomes to independent evidence.
 - [Conformance material](conformance/) — fixtures and expected results for
   implementers.
 - [Agent Skills](skills/) — portable authoring and reconstruction workflows.
